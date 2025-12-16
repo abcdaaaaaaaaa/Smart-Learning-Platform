@@ -1,0 +1,3 @@
+*.htaccess linguist-detectable=true
+*.htaccess linguist-language=ApacheConf
+*.htaccess text
