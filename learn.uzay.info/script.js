@@ -113,10 +113,10 @@ function renderMC(){
         return
     }
     const card=mcQueue[0]
-    definitionEl.textContent=card.definition
+    definitionEl.textContent=card.word
     optionsEl.innerHTML=''
-    const others=shuffle(allCards.map(c=>c.word).filter(w=>w!==card.word)).slice(0,3)
-    const choices=shuffle([card.word,...others])
+    const others=shuffle(allCards.map(c=>c.definition).filter(d=>d!==card.definition)).slice(0,3)
+    const choices=shuffle([card.definition,...others])
     for(const ch of choices){
         const b=document.createElement('button')
         b.className='opt-btn'
@@ -136,7 +136,7 @@ function renderMC(){
 
 function handleMCAnswer(btn,ans,card){
     for(const b of optionsEl.children)b.disabled=true
-    if(ans===card.word){
+    if(ans===card.definition){
         btn.classList.add('correct')
         resultEl.textContent='Doğru!'
         correctSound.currentTime=0
@@ -147,7 +147,7 @@ function handleMCAnswer(btn,ans,card){
         setTimeout(()=>renderMC(),600)
     }else{
         btn.classList.add('wrong')
-        resultEl.textContent='Yanlış. Doğru: '+card.word
+        resultEl.textContent='Yanlış. Doğru: '+card.definition
         mcQueue.shift()
         mcQueue.push(card)
         continueBtn.style.display='inline-block'
