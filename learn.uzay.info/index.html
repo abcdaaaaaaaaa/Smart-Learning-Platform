@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akıllı Öğrenme Platformu</title>
+    <title>Smart Learning Platform</title>
     <link rel="shortcut icon" href="learn.ico">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,33 +11,42 @@
 <div class="progress-bar-container">
     <div class="progress-bar" id="progressBar"></div>
 </div>
+
 <div class="container">
-    <h1>Akıllı Öğrenme Platformu</h1>
+    <h1>Smart Learning Platform</h1>
+
     <div class="controls">
-        <label class="small">language.txt yükle: <input id="file" type="file" accept=".txt"></label>
+        <label class="small" id="fileLabel"><input id="file" type="file" accept=".txt"></label>
+
         <select id="periyot">
             <option value="12">12</option>
             <option value="6">6</option>
             <option value="24">24</option>
         </select>
-        <button id="start">Çalışmayı Başlat</button>
-        <button id="reset">Sıfırla</button>
+
+        <button id="start">Start Study</button>
+        <button id="reset">Reset Study</button>
     </div>
-    <div class="progress" id="progress">language.txt yükleyin.</div>
+
+    <div class="progress" id="progress"></div>
+
     <div id="quiz" style="display:none">
         <div class="card">
             <div class="definition" id="definition"></div>
             <div class="options" id="options"></div>
+
             <div class="field" id="writeArea" style="display:none">
-                <input id="typed" class="input-typed" placeholder="İngilizce kelimeyi yazın">
-                <button id="checkTyped">Kontrol Et</button>
+                <input id="typed" class="input-typed" placeholder="Please type your answer here.">
+                <button id="checkTyped">Check</button>
             </div>
+
             <div style="text-align:center">
-                <button id="hintBtn">İpucu</button>
-                <button id="dontKnowBtn">Cevabı Bilmiyorum</button>
-                <button id="continueBtn">Öğrendim</button>
-                <button id="correctBtn">Cevabım Zaten Doğruydu</button>
+                <button id="hintBtn">Hint</button>
+                <button id="dontKnowBtn">I Don't Know</button>
+                <button id="continueBtn">I Learned It</button>
+                <button id="correctBtn">My Answer Was Already Correct</button>
             </div>
+
             <div class="footer">
                 <div class="note" id="result"></div>
                 <div class="progress" id="counter"></div>
