@@ -68,7 +68,7 @@ function setIdleStatusText(){
     if(allCards.length){
         progress.textContent=allCards.length+' cards loaded. Select a period and click "Start Study". (Period: '+getPeriod()+')'
     }else{
-        progress.textContent='Please upload your txt file first.'
+        progress.textContent='Please upload your txt file.'
     }
 }
 
