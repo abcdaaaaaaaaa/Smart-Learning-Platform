@@ -290,7 +290,7 @@ function renderClassic(){
     optionsEl.innerHTML=''
     writeArea.style.display='flex'
     typed.value=''
-    resultEl.textContent='Classic: type your written answer.'
+    resultEl.textContent='Classic: Type your written answer.'
     counter.textContent='Classic: '+(currentBatch.indexOf(card)+1)+'/'+currentBatch.length
     hintBtn.style.display='inline-block'
     dontKnowBtn.style.display='inline-block'
