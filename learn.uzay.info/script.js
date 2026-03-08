@@ -22,6 +22,7 @@ function shuffle(a){
 
 let allCards=[],currentBatch=[],mcQueue=[],classicQueue=[],batchSize=12,globalQueue=[],state='idle',waitingClassic=false,totalCorrect=0,lastAskedClassicCard=null
 let lastConfirmedPeriod=null
+let loadedFileName=''
 
 const fileInput=document.getElementById('file')
 const fileLabel=document.getElementById('fileLabel')
@@ -61,19 +62,23 @@ function setFileInputVisible(v){
 }
 
 function setStartButtonLabel(){
-    startBtn.textContent = state==='idle' ? 'Start Study' : 'Restart Study'
+    startBtn.textContent=state==='idle' ? 'Start Study' : 'Restart Study'
+}
+
+function getLoadedPrefix(){
+    return loadedFileName ? loadedFileName+': ' : ''
 }
 
 function setIdleStatusText(){
     if(allCards.length){
-        progress.textContent=allCards.length+' cards loaded. Select a period and click "Start Study". (Period: '+getPeriod()+')'
+        progress.textContent=getLoadedPrefix()+allCards.length+' cards loaded. Select a period and click "Start Study" (Period: '+getPeriod()+').'
     }else{
         progress.textContent='Please upload your txt file.'
     }
 }
 
 function setRunningStatusText(){
-    progress.textContent=allCards.length+' cards loaded. (Period: '+getPeriod()+')'
+    progress.textContent=getLoadedPrefix()+allCards.length+' cards loaded (Period: '+getPeriod()+').'
 }
 
 function updateProgressBar(){
@@ -93,6 +98,7 @@ function hardReset(){
     totalCorrect=0
     lastAskedClassicCard=null
     lastConfirmedPeriod=null
+    loadedFileName=''
     quiz.style.display='none'
     optionsEl.innerHTML=''
     writeArea.style.display='none'
@@ -135,6 +141,7 @@ function beginStudy(){
 fileInput.addEventListener('change',e=>{
     const f=e.target.files[0]
     if(!f)return
+    loadedFileName=f.name
     const reader=new FileReader()
     reader.onload=ev=>{
         allCards=parseText(ev.target.result)
