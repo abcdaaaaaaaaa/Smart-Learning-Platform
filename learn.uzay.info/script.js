@@ -52,6 +52,18 @@ function getPeriod(){
     return parseInt(periyotSel.value,10)
 }
 
+function getDefaultPeriodByCount(count){
+    if(count<=30)return 6
+    if(count<=60)return 12
+    return 24
+}
+
+function applyDefaultPeriodByCount(count){
+    const defaultPeriod=getDefaultPeriodByCount(count)
+    periyotSel.value=String(defaultPeriod)
+    lastConfirmedPeriod=defaultPeriod
+}
+
 function resetProgressBar(){
     totalCorrect=0
     progressBar.style.width='0%'
@@ -59,6 +71,12 @@ function resetProgressBar(){
 
 function setFileInputVisible(v){
     fileLabel.style.display=v?'inline-flex':'none'
+}
+
+function setStudyControlsVisible(v){
+    periyotSel.style.display=v?'inline-block':'none'
+    startBtn.style.display=v?'inline-block':'none'
+    resetBtn.style.display=v?'inline-block':'none'
 }
 
 function setStartButtonLabel(){
@@ -111,7 +129,9 @@ function hardReset(){
     counter.textContent=''
     definitionEl.textContent=''
     fileInput.value=''
+    periyotSel.value='12'
     setFileInputVisible(true)
+    setStudyControlsVisible(false)
     setStartButtonLabel()
     setIdleStatusText()
     updateProgressBar()
@@ -132,6 +152,7 @@ function beginStudy(){
     lastConfirmedPeriod=batchSize
     quiz.style.display='block'
     setFileInputVisible(false)
+    setStudyControlsVisible(true)
     setStartButtonLabel()
     setRunningStatusText()
     prepareNextBatch()
@@ -147,10 +168,15 @@ fileInput.addEventListener('change',e=>{
         allCards=parseText(ev.target.result)
         if(allCards.length){
             shuffle(allCards)
-            lastConfirmedPeriod=getPeriod()
+            applyDefaultPeriodByCount(allCards.length)
+            setFileInputVisible(false)
+            setStudyControlsVisible(true)
             setIdleStatusText()
             setStartButtonLabel()
         }else{
+            loadedFileName=''
+            setFileInputVisible(true)
+            setStudyControlsVisible(false)
             progress.textContent='File is empty or invalid.'
         }
     }
@@ -185,7 +211,7 @@ function prepareNextBatch(){
     if(globalQueue.length===0){
         finishAllSound.currentTime=0
         finishAllSound.play()
-        progress.textContent='All periods completed.'
+        progress.textContent=getLoadedPrefix()+'All periods completed.'
         definitionEl.textContent='Finished'
         optionsEl.innerHTML=''
         writeArea.style.display='none'
@@ -279,7 +305,7 @@ function renderClassic(){
             prepareNextBatch()
             return
         }
-        progress.textContent='All periods completed.'
+        progress.textContent=getLoadedPrefix()+'All periods completed.'
         definitionEl.textContent='Finished'
         optionsEl.innerHTML=''
         writeArea.style.display='none'
