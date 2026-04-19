@@ -21,5 +21,14 @@ button:hover,select:hover,input[type=file]:hover{background:#e0e7ff}
 .footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}
 .footer .note{flex:1;min-height:1.2em;font-size:14px;color:#1e3a8a}
 .footer .progress{margin:0;white-space:nowrap;line-height:1.2}
-#continueBtn,#hintBtn,#correctBtn,#dontKnowBtn{display:none;margin-top:14px;background:#3b82f6;color:#fff;border:none;padding:10px 16px;border-radius:10px;cursor:pointer;font-size:15px}
+.switch{display:flex;align-items:center;gap:8px}
+.switch input{display:none}
+.slider{width:40px;height:20px;background:#ccc;border-radius:20px;position:relative}
+.slider:before{content:"";position:absolute;width:16px;height:16px;background:#fff;border-radius:50%;top:2px;left:2px;transition:.2s}
+.switch input:checked + .slider{background:#3b82f6}
+.switch input:checked + .slider:before{transform:translateX(20px)}
+.label{font-size:13px}
+#continueBtn,#hintBtn,#correctBtn,#dontKnowBtn{display:none;margin-top:14px;background:#3b82f6;color:#fff;border:none;padding:10px 16px;border-radius:10px;cursor:pointer;font-size:15px;transition:opacity .3s ease}
 #continueBtn:hover,#hintBtn:hover,#correctBtn:hover,#dontKnowBtn:hover{background:#2563eb}
+#switchBox{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+#switchBox.single > *{margin-top:auto;margin-bottom:auto;align-self:center}
