@@ -1,64 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Learning Platform</title>
-    <link rel="shortcut icon" href="learn.ico">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Learning Platform</title>
+<link rel="shortcut icon" href="learn.ico">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="progress-bar-container">
-    <div class="progress-bar" id="progressBar"></div>
-</div>
-
+<div class="progress-bar-container"><div class="progress-bar" id="progressBar"></div></div>
 <div class="container">
-    <h1>Smart Learning Platform</h1>
-
-    <div class="controls">
-        <label class="small" id="fileLabel"><input id="file" type="file" accept=".txt"></label>
-
-        <select id="periyot" style="display:none">
-            <option value="12">12</option>
-            <option value="6">6</option>
-            <option value="24">24</option>
-        </select>
-
-        <button id="start" style="display:none">Start Study</button>
-        <button id="reset" style="display:none">Reset Study</button>
-    </div>
-
-    <div class="progress" id="progress"></div>
-
-    <div id="quiz" style="display:none">
-        <div class="card">
-            <div class="definition" id="definition"></div>
-            <div class="options" id="options"></div>
-
-            <div class="field" id="writeArea" style="display:none">
-                <input id="typed" class="input-typed" placeholder="Please type your answer here.">
-                <button id="checkTyped">Check</button>
-            </div>
-
-            <div style="text-align:center">
-                <button id="hintBtn">Hint</button>
-                <button id="dontKnowBtn">I Don't Know</button>
-                <button id="continueBtn">I Learned It</button>
-                <button id="correctBtn">My Answer Was Already Correct</button>
-            </div>
-
-            <div class="footer">
-                <div class="note" id="result"></div>
-                <div class="progress" id="counter"></div>
-            </div>
-        </div>
-    </div>
+<h1>Smart Learning Platform</h1>
+<div class="controls">
+<label class="small" id="fileLabel"><input id="file" type="file" accept=".txt"></label>
+<select id="periyot" style="display:none">
+<option value="12">12</option><option value="6">6</option><option value="24">24</option>
+</select>
+<select id="lang" style="display:none">
+<option value="none">Study Mode</option><option value="en" selected>English</option><option value="tr">Türkçe</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="es">Español</option><option value="it">Italiano</option><option value="ru">Русский</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="zh">中文</option><option value="ar">العربية</option><option value="pt">Português</option><option value="nl">Nederlands</option><option value="sv">Svenska</option><option value="pl">Polski</option><option value="hi">हिन्दी</option><option value="id">Bahasa Indonesia</option><option value="cs">Čeština</option><option value="el">Ελληνικά</option><option value="he">עברית</option><option value="th">ไทย</option><option value="vi">Tiếng Việt</option>
+</select>
+<div id="switchBox" style="display:none">
+<label class="switch"><input type="checkbox" id="speechSwitch" checked><span class="slider"></span><span class="label">Word Reading</span></label>
+<label class="switch"><input type="checkbox" id="musicSwitch" checked><span class="slider"></span><span class="label">Correct Sound</span></label>
 </div>
-
+<button id="start" style="display:none">Start</button>
+<button id="reset" style="display:none">Reset</button>
+</div>
+<div class="progress" id="progress"></div>
+<div id="quiz" style="display:none">
+<div class="card">
+<div class="definition" id="definition"></div>
+<div class="options" id="options"></div>
+<div class="field" id="writeArea" style="display:none">
+<input id="typed" class="input-typed" placeholder="Please type your answer here.">
+<button id="checkTyped">Check</button>
+</div>
+<div style="text-align:center">
+<button id="hintBtn">Hint</button>
+<button id="dontKnowBtn">I Don't Know</button>
+<button id="continueBtn">I Learned It</button>
+<button id="correctBtn">My Answer Was Already Correct</button>
+</div>
+<div class="footer">
+<div class="note" id="result"></div>
+<div class="progress" id="counter"></div>
+</div>
+</div>
+</div>
+</div>
 <audio id="correctSound" src="correctSound.mp3"></audio>
 <audio id="finishBatchSound" src="finishBatchSound.mp3"></audio>
 <audio id="finishAllSound" src="finishAllSound.mp3"></audio>
-
 <script src="script.js"></script>
 </body>
 </html>
