@@ -1,1 +1,1 @@
-# Smart-Learning-Platform
+# Vocabulary-Learning-Platform
